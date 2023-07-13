@@ -1,30 +1,11 @@
-# Define UI for app that draws a histogram ----
-ui <- fluidPage(
+teal.data <- teal.data::teal_data(
+  teal.data::dataset("IRIS", iris, code = "IRIS <- iris")
+)
 
-  # App title ----
-  titlePanel("Hello Shiny!"),
-
-  # Sidebar layout with input and output definitions ----
-  sidebarLayout(
-
-    # Sidebar panel for inputs ----
-    sidebarPanel(
-
-      # Input: Slider for the number of bins ----
-      sliderInput(inputId = "bins",
-                  label = "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
-
-    ),
-
-    # Main panel for displaying outputs ----
-    mainPanel(
-
-      # Output: Histogram ----
-      plotOutput(outputId = "distPlot")
-
-    )
-  )
+ui <- teal::ui_teal_with_splash(
+  id = "teal-wrapper",
+  data = teal.data,
+  title = "Minimal teal",
+  header = "Minimal teal example",
+  footer = "I am a good footer"
 )

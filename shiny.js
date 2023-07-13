@@ -105,9 +105,13 @@ import('https://webr.r-wasm.org/latest/webr.mjs').then(async ({ WebR }) => {
 
   // Install and run shiny
   await webR.evalRVoid(`webr::install("shiny", repos="${window.location.href}/repo/")`);
+  await webR.evalRVoid(`webr::install("teal", repos="${window.location.href}/repo/")`);
+  await webR.evalRVoid(`webr::install("teal.data", repos="${window.location.href}/repo/")`);
   webR.writeConsole(`
     library(shiny)
     options(shiny.trace = TRUE)
+    library(teal)
+    options(expressions=5000)
     runApp('app', display.mode = 'showcase')
   `);
 
